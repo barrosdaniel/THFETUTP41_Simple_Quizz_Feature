@@ -14,6 +14,15 @@ function print(message) {
   outputDiv.innerHTML = message;
 }
 
+function buildList(array) {
+  var listHTML = '<ol>';
+  for (var i = 0; i < array.length; i++) {
+    listHTML += '<li>' + array[i] + '</li>';
+  }
+  listHTML += '</ol>';
+  return listHTML;
+}
+
 alert('Are you ready to start the quizz? Press OK to start! To exit type quit.');
 
 for (var i = 0; i < questions.length; i++) {
@@ -32,17 +41,11 @@ for (var i = 0; i < questions.length; i++) {
 }
 
 var message = '<p>You got ' + questionsRightCount + ' question(s) right.</p>';
+
 message += '<h2> You got these questions correct:</h2>';
-message += '<ol>';
-for (var i = 0; i < questionsRight.length; i++) {
-  message += '<li>' + questionsRight[i] + '</li>';
-}
-message += '</ol>'
+message += buildList(questionsRight);
+
 message += '<h2> You got these questions wrong:</h2>';
-message += '<ol>';
-for (var i = 0; i < questionsWrong.length; i++) {
-  message += '<li>' + questionsWrong[i] + '</li>';
-}
-message += '</ol>'
+message += buildList(questionsWrong);
 
 print(message);
